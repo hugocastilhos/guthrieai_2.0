@@ -645,3 +645,26 @@ setInterval(() => {
     box.insertBefore(item, box.firstChild);
     if (box.children.length > 5) box.removeChild(box.lastChild);
 }, 5000);
+
+/* DASHBOARD NAVIGATION  */
+function dbNav(section, btn) {
+    // 1. Remove classes ativas
+    document.querySelectorAll('.db-nl').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.db-section').forEach(s => s.classList.remove('active'));
+    
+    // 2. Ativa o botão correto
+    if (btn) btn.classList.add('active');
+    
+    // 3. Mostra a seção correta
+    const sec = document.getElementById('sec-' + section);
+    if (sec) {
+        sec.classList.add('active');
+        sec.style.animation = 'fadeIn .4s ease';
+    }
+
+    // 4. Fechar menus mobile se necessário
+    document.getElementById('dbSidebar').classList.remove('mob-open');
+    
+    // 5. Scroll suave para o topo do conteúdo
+    document.querySelector('.db-main').scrollTop = 0;
+}
