@@ -31,10 +31,30 @@
   box-sizing: border-box;
 }
  
-/* Garante a transição linear perfeita (estilo esteira rolante) */
-.clients-slider .swiper-wrapper {
-  transition-timing-function: linear !important;
-}
+.clients-swiper {
+    width: 100%;
+    overflow: hidden; /* Obrigatorio para esconder o que sai da tela */
+  }
+  .clients-swiper .swiper-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+/* Seletor que pega tanto a logo única quanto as do carrossel */
+  .client-logo img, 
+  .swiper-slide img {
+    /* filter: grayscale(100%); */
+    /* opacity: 0.6; */
+    transition: all 0.4s ease-in-out;
+    display: inline-block; /* Importante para o scale funcionar bem */
+  }
+
+  .client-logo img:hover, 
+  .swiper-slide img:hover {
+    /* filter: grayscale(0%); */
+    /* opacity: 1; */
+    transform: scale(1.2);
+  }
 
 /* BOX EM VOLTA DE CADA LOGO */
 .clients-slider .client-logo {
