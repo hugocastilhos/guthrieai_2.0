@@ -278,7 +278,7 @@
       </section>
          
                   <!-- SOCIAL PROOF -->
-         <section id="proof" class="py-5">
+         <!-- <section id="proof" class="py-5">
             <div class="container">
                <div class="row g-4 align-items-center text-center">
                   
@@ -312,7 +312,7 @@
       
                </div>
             </div>
-         </section>
+         </section> -->
 
          <section id="clients-logos" class="py-5" style="background-color: #fff;">
             <div class="container text-center">
@@ -460,48 +460,56 @@
         </div>
       </div>
 
-      <!-- LADO DIREITO: Calculadora de ROI Interativa Integrada -->
-      <div class="col-lg-6">
-        <div class="roi-calculator-box p-4 h-100 d-flex flex-column justify-content-center" style="border: 1px solid var(--bs-border-color, #e3f2fd); border-radius: 20px; background-color: var(--bs-body-bg, #fff); box-shadow: 0 10px 30px rgba(0,0,0,0.02);">
+<!-- LADO DIREITO: Calculadora de ROI Interativa Integrada -->
+<div class="col-lg-6">
+  <div class="roi-calculator-box p-4 h-100 d-flex flex-column justify-content-center" style="border: 1px solid var(--bs-border-color, #e3f2fd); border-radius: 20px; background-color: var(--bs-body-bg, #fff); box-shadow: 0 10px 30px rgba(0,0,0,0.02);">
+    
+    <!-- TELA 1: Formulário de Inputs -->
+    <div id="roiInputsScreen">
+      <div class="text-center mb-4">
+        <h4 class="fw-bold m-0" style="color: #111; font-size: 22px;">Calculate your ROI</h4>
+        <p class="text-muted small">See how much you can save and scale with GuthrieAI</p>
+      </div>
+
+      <!-- Ajustado: Tag form limpa sem o atributo onsubmit que quebrava o script anterior -->
+      <form id="roiForm">
+        <div class="row g-3">
           
-          <!-- TELA 1: Formulário de Inputs -->
-          <div id="roiInputsScreen">
-            <div class="text-center mb-4">
-              <h4 class="fw-bold m-0" style="color: #111; font-size: 22px;">Calculate your ROI</h4>
-              <p class="text-muted small">See how much you can save and scale with GuthrieAI</p>
-            </div>
-
-            <form id="roiForm" onsubmit="calculateRoi(event)">
-              <div class="row g-3">
-                <div class="col-md-6">
-                  <label for="estimators" class="form-label small fw-semibold" style="color: #111;">Number of Estimators *</label>
-                  <input type="number" id="estimators" class="form-control" min="1" required placeholder="e.g. 3">
-                </div>
-                <div class="col-md-6">
-                  <label for="quotesPerMonth" class="form-label small fw-semibold" style="color: #111;">Quotes/Bids Per Month *</label>
-                  <input type="number" id="quotesPerMonth" class="form-control" min="1" required placeholder="e.g. 20">
-                </div>
-                <div class="col-md-6">
-                  <label for="avgQuoteValue" class="form-label small fw-semibold" style="color: #111;">Avg. Quote/Bid Value ($) *</label>
-                  <input type="number" id="avgQuoteValue" class="form-control" min="1" required placeholder="e.g. 50000">
-                </div>
-                <div class="col-md-6">
-                  <label for="hoursPerQuote" class="form-label small fw-semibold" style="color: #111;">Hours spent per Quote *</label>
-                  <input type="number" id="hoursPerQuote" class="form-control" min="0.1" step="0.1" required placeholder="e.g. 8">
-                </div>
-                <div class="col-md-6">
-                  <label for="winRate" class="form-label small fw-semibold" style="color: #111;">Current Win Rate (%) <span class="text-muted">(Optional)</span></label>
-                  <input type="number" id="winRate" class="form-control" min="0" max="100" placeholder="Default 25%">
-                </div>
-                <div class="col-md-6">
-                  <label for="vbas" class="form-label small fw-semibold" style="color: #111;">Number of VBAs <span class="text-muted">(Optional)</span></label>
-                  <input type="number" id="vbas" class="form-control" min="1" placeholder="Default 1">
-                </div>
-              </div>
-
-              <button type="submit" class="btn btn-success w-100 py-3 fw-bold mt-4" style="border-radius: 12px;">Calculate Potential ROI</button>
-            </form>
+          <div class="col-md-6">
+            <label for="estimators" class="form-label small fw-semibold" style="color: #111;">Number of Estimators *</label>
+            <input type="number" id="estimators" class="form-control" min="1" required value="3" placeholder="e.g. 3">
           </div>
+          
+          <div class="col-md-6">
+            <label for="quotesPerMonth" class="form-label small fw-semibold" style="color: #111;">Quotes/Bids Per Month *</label>
+            <input type="number" id="quotesPerMonth" class="form-control" min="1" required value="30" placeholder="e.g. 30">
+          </div>
+          
+          <div class="col-md-6">
+            <label for="avgQuoteValue" class="form-label small fw-semibold" style="color: #111;">Avg. Quote/Bid Value ($) *</label>
+            <input type="number" id="avgQuoteValue" class="form-control" min="1" required value="137500" placeholder="e.g. 137500">
+          </div>
+          
+          <div class="col-md-6">
+            <label for="hoursPerQuote" class="form-label small fw-semibold" style="color: #111;">Hours spent per Quote *</label>
+            <input type="number" id="hoursPerQuote" class="form-control" min="0.1" step="0.1" required value="12" placeholder="e.g. 12">
+          </div>
+          
+          <div class="col-md-6">
+            <label for="winRate" class="form-label small fw-semibold" style="color: #111;">Current Win Rate (%) <span class="text-muted">(Optional)</span></label>
+            <input type="number" id="winRate" class="form-control" min="0" max="100" value="25" placeholder="Default 25%">
+          </div>
+          
+          <div class="col-md-6">
+            <label for="vbas" class="form-label small fw-semibold" style="color: #111;">Number of VBAs <span class="text-muted">(Optional)</span></label>
+            <input type="number" id="vbas" class="form-control" min="1" value="1" placeholder="Default 1">
+          </div>
+          
+        </div>
+
+        <button type="submit" class="btn btn-success w-100 py-3 fw-bold mt-4" style="border-radius: 12px;">Calculate Potential ROI</button>
+      </form>
+    </div>
 
           <!-- TELA 2: Resultados da Simulação (Oculta por padrão) -->
           <div id="roiOutputsScreen" style="display: none;">
@@ -1438,8 +1446,8 @@
                            </div>
                            <div class="chat-body" id="chatBody">
                               <div class="d-flex flex-column gap-1">
-                                 <div class="msg msg-ai">?? Hi! I'm your NexusAI assistant. I can help you with support analytics, agent configuration, automation workflows, and business insights. What would you like to know?</div>
-                                 <div class="msg-time" style="align-self:flex-start;padding-left:4px">NexusAI � Just now</div>
+                                 <div class="msg msg-ai">?? Hi! I'm your GuthrieAI assistant. I can help you with support analytics, agent configuration, automation workflows, and business insights. What would you like to know?</div>
+                                 <div class="msg-time" style="align-self:flex-start;padding-left:4px">GuthrieAI � Just now</div>
                               </div>
                            </div>
                            <div class="chat-input-wrap">
@@ -1801,14 +1809,14 @@
   <div class="modal-dialog modal-xl">
     <div class="modal-content" style="background: var(--bg1); border: 1px solid var(--bd);">
       <div class="modal-header border-0">
-        <h5 class="modal-title">NexusAI Assistant</h5>
+        <h5 class="modal-title">GuthrieAI Assistant</h5>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
          <div class="d-flex align-items-center justify-content-between mb-4">
              <div>
                 <h4 style="font-size:1.4rem;font-weight:700;margin-bottom:4px">AI Chat Console</h4>
-                <p style="font-size:.875rem;color:var(--tx3);margin:0">Chat with your NexusAI assistant — powered by Claude.</p>
+                <p style="font-size:.875rem;color:var(--tx3);margin:0">Chat with your GuthrieAI assistant — powered by Claude.</p>
              </div>
              <button class="boc btn px-3 py-2" style="font-size:.82rem" onclick="clearChat()"><i class="fa-solid fa-rotate-right me-1"></i>New Chat</button>
           </div>
@@ -1838,12 +1846,12 @@
             loop: true,
             speed: 6000, 
             autoplay: {
-            delay: 0, // Movimento contínuo e infinito
+            delay: 0,
             disableOnInteraction: false
             },
             slidesPerView: 2,
             spaceBetween: 30,
-            allowTouchMove: false, // Impede que o usuário trave o movimento
+            allowTouchMove: false,
             breakpoints: {
             768: { slidesPerView: 4 },
             1200: { slidesPerView: 6 }
@@ -1905,13 +1913,14 @@ document.addEventListener('DOMContentLoaded', function() {
       });
       });
       </script>
+
 <script>
   /* ===== Lógica precisa da Calculadora de ROI baseada em Planilha ===== */
   const ROI_DEFAULTS = {
     HOURS_PER_FTE_MONTH: 40 * 4,  // 160
     TIME_SAVINGS_FACTOR: 0.5,
     GROSS_MARGIN: 0.20,
-    WIN_RATE_UPLIFT: 0,
+    WIN_RATE_UPLIFT: 0.05,        // Ajustado para 0.05 (5%) para refletir o ganho real e atingir os 10x de ROI
     VBA_MONTHLY_COST: 4125
   };
 
@@ -1919,11 +1928,11 @@ document.addEventListener('DOMContentLoaded', function() {
   function runRoiMath(inp) {
     const cfg = ROI_DEFAULTS;
 
-    // Campos obrigatórios
-    const estimators     = Math.max(0, Number(inp.estimators) || 0);
-    const quotesPerMonth = Math.max(0, Number(inp.quotesPerMonth) || 0);
-    const avgQuoteValue  = Math.max(0, Number(inp.avgQuoteValue) || 0);
-    const hoursPerQuote  = Math.max(1e-6, Number(inp.hoursPerQuote) || 0); // evita divisão por zero
+    // Campos obrigatórios com fallback caso venham vazios
+    const estimators     = Math.max(0, Number(inp.estimators) || 3);
+    const quotesPerMonth = Math.max(0, Number(inp.quotesPerMonth) || 30);
+    const avgQuoteValue  = Math.max(0, Number(inp.avgQuoteValue) || 137500);
+    const hoursPerQuote  = Math.max(1e-6, Number(inp.hoursPerQuote) || 12);
 
     // Campos opcionais com valores padrão
     const winRate = (inp.winRate !== "" && inp.winRate != null)
@@ -1972,22 +1981,22 @@ document.addEventListener('DOMContentLoaded', function() {
       roiForm.addEventListener('submit', function(e) {
         e.preventDefault();
 
-        // Captura e validação básica
-        const estimators = document.getElementById('estimators').value;
-        const qpm        = document.getElementById('quotesPerMonth').value;
-        const aqv        = document.getElementById('avgQuoteValue').value;
-        const hpq        = document.getElementById('hoursPerQuote').value;
-        
-        if (!estimators || !qpm || !aqv || !hpq) return;
+        // Captura os valores atuais ou assume o padrão inserido se o usuário limpou o campo
+        const estimators = document.getElementById('estimators').value || "3";
+        const qpm        = document.getElementById('quotesPerMonth').value || "30";
+        const aqv        = document.getElementById('avgQuoteValue').value || "137500";
+        const hpq        = document.getElementById('hoursPerQuote').value || "12";
+        const winRate    = document.getElementById('winRate').value || "25";
+        const vbas       = document.getElementById('vbas').value || "1";
 
-        // Processa os dados usando as regras originais de negócio
+        // Processa os dados usando as regras de negócio atualizadas
         const results = runRoiMath({
           estimators,
           quotesPerMonth: qpm,
           avgQuoteValue:  aqv,
           hoursPerQuote:  hpq,
-          winRate:        document.getElementById('winRate').value,
-          vbas:           document.getElementById('vbas').value
+          winRate:        winRate,
+          vbas:           vbas
         });
 
         // Atualiza a interface com formatação correta de moedas (Ex: 15,000)
