@@ -30,6 +30,35 @@
 *::after {
   box-sizing: border-box;
 }
+
+/* Base para desktop */
+.dgrid { 
+    display: grid; 
+    grid-template-columns: 185px 1fr; 
+}
+
+/* Regra para Mobile (Telas até 991px) */
+@media (max-width: 991px) {
+    .dgrid { 
+        display: flex !important; 
+        flex-direction: column !important; 
+    }
+    
+    .dside { 
+        display: block !important; /* Força a exibição */
+        width: 100% !important; 
+        border-right: none !important; 
+        border-bottom: 1px solid var(--bd); 
+        padding: 15px !important;
+        text-align: center;
+    }
+
+    .dsi { 
+        width: 100% !important; 
+        justify-content: center !important; 
+        padding: 12px !important;
+    }
+}
  
 .video-container {
     border: 1px solid rgba(255, 255, 255, 0.1);
